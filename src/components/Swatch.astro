@@ -1,0 +1,55 @@
+---
+interface Props {
+    color: string;
+    code: string;
+    name: string;
+    pantone: string;
+}
+
+const { color, code, name, pantone } = Astro.props;
+---
+
+<div class="swatch sl-flex" style="width:160px">
+    <div style=`height:80px;width:100%;background-color:${color}`></div>
+    <h4 class="title">{code}</h4>
+    <p class="body">
+        <b>{name}</b><br />
+        <small class="muted"
+            >{color}<br />
+            PANTONE {pantone}
+        </small>
+    </p>
+</div>
+
+<style>
+    .swatch {
+        border: 1px solid var(--sl-color-gray-5);
+        background-color: var(--sl-color-black);
+        padding: 1.5rem;
+        flex-direction: column;
+        margin: 0.5rem;
+    }
+    .swatch .title {
+        font-weight: 600;
+        font-size: var(--sl-text-h4);
+        color: var(--sl-color-white);
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        align-items: center;
+    }
+    .swatch .icon {
+        border: 1px solid var(--sl-card-border);
+        background-color: var(--sl-card-bg);
+        padding: 0.2em;
+        border-radius: 0.25rem;
+        flex-shrink: 0;
+    }
+    .swatch .body {
+        margin: 0;
+        line-height: 1.2;
+        font-size: var(--sl-text-md);
+    }
+    .swatch .body .muted {
+        color: var(--sl-color-gray-3);
+    }
+</style>

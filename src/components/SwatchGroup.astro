@@ -1,0 +1,21 @@
+---
+// interface Props {
+//     name: string;
+// }
+
+// const { name } = Astro.props;
+---
+
+<!-- <figure class="figure"> -->
+<div class="swatch-grid">
+    <slot />
+</div>
+<!-- <figcaption class="figure-caption">{name}</figcaption>
+</figure> -->
+
+<style>
+    .swatch-grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>

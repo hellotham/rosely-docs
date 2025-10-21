@@ -1,34 +1,58 @@
 # Rosely Documentation
 
-This contains the documentation of the [Rosely](https://github.com/hellotham/Rosely) design system, written in [Hugo](https://gohugo.io) using the [Docsy](https://github.com/google/docsy) theme.
+[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5330f8d6-4a92-49dc-8bb7-2fd3f1f459c4/deploy-status)](https://app.netlify.com/projects/rosely/deploys)
+
+This contains the documentation of the [Rosely](https://github.com/hellotham/Rosely) design system, written in [Astro](https://astro.build) using the [Starlight](https://starlight.astro.build) template.
 
 It is currently hosted at [Netlify](https://netlify.com). The website address is https://rosely.hellotham.com
 
-## Cloning the Project
+## 🚀 Project Structure
 
-The following will give you a project that is set up and ready to use (don't forget to use `--recurse-submodules` or you won't pull down some of the code you need to generate a working site). The `hugo server` command builds and serves the site. If you just want to build the site, run `hugo` instead.
+Inside the project, you'll see the following folders and files:
 
-```bash
-git clone --recurse-submodules --depth 1 https://github.com/hellotham/rosely-docs.git
-cd rosely-docs
-npm install
-hugo server
+```
+.
+├── public/
+├── src/
+│   ├── assets/
+│   ├── content/
+│   │   └── docs/
+│   └── content.config.ts
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
 ```
 
-## Deployment with Netlify
+Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
 
-Follow the instructions in *Host on Netlify* to set up a Netlify account (if you don’t have one already) and authorize access to your GitHub or other Git provider account. Once you’re logged in:
+Images are in `src/assets/` and embedded in Markdown with a relative link.
 
-1. Click New site from Git.
-2. Click your chosen Git provider, then choose https://github.com/hellotham/rosely-docs.git from your list of repos.
-3. In the Deploy settings page:
-    1. For your Build command, specify `cd themes/docsy && git submodule update -f --init && cd ../.. && hugo`. You need to specify this rather than just hugo so that Netlify can use the theme’s submodules.
-    2. Click Show advanced.
-    3. In the Advanced build settings section, click New variable.
-    4. Specify `HUGO_VERSION` as the Key for the new variable, and `0.79.1` or later as its Value.
-    5. (Optional) Click New variable again, and this time set `HUGO_ENV` to `production`. Do this if you want your site to be indexed by search engines. You must do this if you want to use a Google Custom Search Engine.
-4. Click Deploy site.
+Static assets, like favicons, are placed in the `public/` directory.
 
-Alternatively, you can follow the same instructions but specify your Deploy settings in a netlify.toml file in your repo rather than in the Deploy settings page. You can see an example of this in the Docsy theme repo.
+## 🧞 Commands
 
-If you have an existing deployment you can view and update the relevant information by selecting the site from your list of sites in Netlify, then clicking Site settings - Build and deploy. Ensure that Ubuntu Xenial 16.04 is selected in the Build image selection section - if you’re creating a new deployment this is used by default. You need to use this image to run the extended version of Hugo.
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `pnpm install`             | Installs dependencies                            |
+| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
+| `pnpm build`           | Build your production site to `./dist/`          |
+| `pnpm preview`         | Preview your build locally, before deploying     |
+| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+
+## Deploy to Netlify
+
+[Read the full deployment guide here.](https://docs.astro.build/en/guides/deploy/netlify/)
+
+Follow the instructions to [build your site locally]((https://docs.astro.build/en/guides/deploy/#building-your-site-locally). After building, you will have a `.netlify/` folder containing both [Netlify Functions](https://docs.netlify.com/functions/overview/) in the `.netlify/functions-internal/` folder and [Netlify Edge Functions](https://docs.netlify.com/edge-functions/overview/) in the`.netlify/edge-functions/` folder.
+
+To deploy your site, install the [Netlify CLI](https://docs.netlify.com/cli/get-started/) and run:
+
+```sh
+netlify deploy
+```
+
+The [Netlify Blog post on Astro](https://www.netlify.com/blog/how-to-deploy-astro/) and the [Netlify Docs](https://docs.netlify.com/integrations/frameworks/astro/) provide more information on how to use this integration to deploy to Netlify.

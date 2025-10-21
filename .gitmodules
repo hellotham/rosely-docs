@@ -1,7 +1,0 @@
-
-[submodule "themes/docsy"]
-	path = themes/docsy
-	url = https://github.com/google/docsy
-[submodule "themes/hugo-creative-portfolio-theme"]
-	path = themes/hugo-creative-portfolio-theme
-	url = https://github.com/kishaningithub/hugo-creative-portfolio-theme.git

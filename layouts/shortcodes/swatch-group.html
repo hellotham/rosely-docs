@@ -1,7 +1,0 @@
-{{ $name := .Get "name" | default "Palette"  }}
-<figure class="figure">
-	<div class="row">
-		{{ .Inner | markdownify}}
-	</div>
-  <figcaption class="figure-caption">{{ $name }}</figcaption>
-</figure>
